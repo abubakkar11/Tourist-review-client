@@ -1,14 +1,27 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvoder/AuthProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLongArrowAltRight, faUser } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
-  const {user} = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext)
   console.log(user)
   const menuBar = <>
     <li><Link to={'/'}>Home</Link></li>
     <li><Link to={'/services'}>Services</Link></li>
+    {
+      user?.uid ? <Link className='mt-3'>Reveiw</Link> :
+      ''
+    }
   </>
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+
+      })
+      .catch(err => console.error(err))
+  }
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -28,14 +41,21 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <p>Email {user?.email}</p>
+        <p className='mr-5'>{user?.displayName}</p>
+
         {
-          user?.uid ? <button className="btn btn-warning">LogOut</button>
-          :
-          <>
-        <Link to={'/login'}><button className="btn btn-outline btn-warning mr-3">Login</button></Link>
-        <Link to={'/register'}><button className="btn btn-outline btn-warning">Register</button> </Link>
-          </>
+          user?.photoURL ? <img className='rounded-full w-7 mr-5' src={user?.photoURL} alt="" />
+            :
+            <FontAwesomeIcon className='mr-5' icon={faUser} />
+        }
+
+        {
+          user?.uid ? <FontAwesomeIcon onClick={handleLogOut} icon={faLongArrowAltRight}></FontAwesomeIcon>
+            :
+            <>
+              <Link to={'/login'}><button className="btn btn-outline btn-warning mr-3">Login</button></Link>
+              <Link to={'/register'}><button className="btn btn-outline btn-warning">Register</button> </Link>
+            </>
         }
       </div>
     </div>

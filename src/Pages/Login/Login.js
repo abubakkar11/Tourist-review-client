@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../AuthProvoder/AuthProvider';
 import loginImage from '../../Images/login/login.png'
 
 const Login = () => {
+    const [error , setError] = useState(false)
     //import context
   const {login} = useContext(AuthContext)
   // Register form submit handle
@@ -16,8 +18,15 @@ const Login = () => {
     .then(result =>{
         const user = result.user;
         console.log(user)
+        setError(true)
+        toast.success('Login Successfull')
+        form.reset()
     })
-    .catch(err => console.error(err))
+    .catch(err => {
+        const error = err.message;
+        toast.error(error)
+        setError(error)
+    })
     }
         return (
         <div className="hero min-h-screen bg-base-200 ">
@@ -38,7 +47,7 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input type="password" name='password' placeholder="password" className="input input-bordered" required/>
-               
+               <p className='text-error mt-3'>{error}</p>
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
