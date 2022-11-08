@@ -6,6 +6,8 @@ import Image4 from '../../Images/bannar/images3.jpg'
 import Banner from './Banner';
 import ServicesCard from './ServicesCard';
 import About from './About/About';
+import ContractGuide from './ContractGuide/ContractGuide';
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
@@ -58,9 +60,15 @@ const Home = () => {
             service={service}
           ></ServicesCard>)
         }
+       <div className='mt-10'>
+       <Link to={'/services'}><button className="btn btn-primary">See all</button></Link>
+       </div>
       </div>
       <div>
        <About></About>
+      </div>
+      <div>
+        <ContractGuide></ContractGuide>
       </div>
     </div>
   );
