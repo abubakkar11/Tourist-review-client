@@ -28,9 +28,15 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        Name : {user}
+        <p>Email {user?.email}</p>
+        {
+          user?.uid ? <button className="btn btn-warning">LogOut</button>
+          :
+          <>
         <Link to={'/login'}><button className="btn btn-outline btn-warning mr-3">Login</button></Link>
         <Link to={'/register'}><button className="btn btn-outline btn-warning">Register</button> </Link>
+          </>
+        }
       </div>
     </div>
   );
