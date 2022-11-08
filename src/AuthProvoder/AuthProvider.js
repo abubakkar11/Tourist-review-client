@@ -33,9 +33,10 @@ const AuthProvider = ({ children }) => {
    const signUpWithGitHub = (provider) =>{
     return signInWithPopup(auth , provider)
    }
-   const updateProfiles = (profile) => {
-    return updateProfile(auth.currentUser, profile);
-}
+   const updateProfiles = (profiles ) => {
+    console.log(auth.currentUser);
+    return updateProfile(auth.currentUser, profiles)
+   };
    //current user
    useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, currentUser => {

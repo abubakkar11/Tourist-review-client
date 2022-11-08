@@ -17,12 +17,12 @@ const Register = () => {
     const handleSignUp = event => {
         event.preventDefault();
         const form = event.target;
-        const name = form.name.value;
+        const displayName = form.name.value;
         const photoURL = form.photoURL.value;
-        handleUpdateProfile(name, photoURL)
         const email = form.email.value;
+        handleUpdateProfiles(displayName , photoURL)
         const password = form.password.value;
-        console.log(name, photoURL, email, password)
+        console.log(displayName, photoURL, email, password)
         signInWithEmail(email, password)
             .then(result => {
                 const user = result.user;
@@ -36,17 +36,17 @@ const Register = () => {
                 toast.error(error)
                 setError(error)
             })
-        const handleUpdateProfile = (name, photoURL) => {
-            const profile = {
-                displayName: name,
-                photoURL: photoURL
-            }
-            updateProfiles(profile)
-                .then(() => {
-                    'profile updated'
-                })
-                .catch(err => console.error(err))
-        }
+    }
+    const handleUpdateProfiles = (displayName , photoURL) =>{
+       const profiles ={
+        displayName : displayName,
+        photoURL : photoURL
+       }
+       updateProfiles(profiles)
+       .then(() =>{
+        'profile updated'
+       })
+       .catch(err => console.error(err))
     }
     const handleGoogleSignUp = () => {
         signUpWithGoogle(googleProvider)

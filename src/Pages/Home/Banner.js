@@ -2,6 +2,8 @@ import React from 'react';
 import './Banner.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightLong , faLeftLong } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
+import About from './About/About';
 
 const Banner = ({banner}) => {
     const {img , pre , id , next} = banner
@@ -17,16 +19,17 @@ const Banner = ({banner}) => {
                 </div>
                 <div className="absolute ml-5 flex justify-start transform -translate-y-1/2 left-5 right-5 top-1/4">
                     <h1 className='text-6xl text-white font-bold'>
-                        Affordable <br />
-                        Price For Car <br />
-                        Servicing
+                    Cox'S Bazar <br />
+                     Tour Guide
                     </h1>
                 </div>
                 <div className="absolute w-96 ml-5 flex justify-start transform -translate-y-1/2 left-5 right-5 top-2/4">
-                    <p className='text-white'>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+                    <p className='text-white'>Stretching more than 120 kilometers around the Bay of Bengal,
+                     Cox’s Bazaar is the longest beach on the planet. Engage a local tourHQ guide to reveal 
+                     the best sunset spots, surfing and natural wonders.</p>
                 </div>
                 <div className="absolute w-96 ml-5 flex justify-start transform -translate-y-1/2 left-5 right-5 top-3/4">
-                <button className="btn btn-warning mr-5 rounded-lg	">About me</button>
+                <button  className="btn btn-warning mr-5 rounded-lg"><Link>About me</Link></button>
 
                 </div>
             </div>
