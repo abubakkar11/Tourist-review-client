@@ -3,13 +3,24 @@ import { AuthContext } from '../../AuthProvoder/AuthProvider';
 import loginImage from '../../Images/login/login.png'
 
 const Register = () => {
+ //import context
   const {signInWithEmail} = useContext(AuthContext)
-  
+  // Register form submit handle
     const handleSignUp = event =>{
     event.preventDefault();
-    console.log(event)
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name , photoURL ,email , password)
+    signInWithEmail(email , password)
+    .then(result =>{
+        const user = result.user;
+        console.log(user)
+    })
+    .catch(err => console.error(err))
     }
-
         return (
         <div className="hero min-h-screen bg-base-200 ">
         <div className="hero-content flex-col lg:flex-row justify-between">
@@ -17,7 +28,7 @@ const Register = () => {
            <img src={loginImage} alt="" />
           </div>
           <div className="card flex-shrink-0  shadow-2xl bg-base-100 w-1/2 ml-10">
-            <form onClick={handleSignUp} className="card-body">
+            <form onSubmit={handleSignUp} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>

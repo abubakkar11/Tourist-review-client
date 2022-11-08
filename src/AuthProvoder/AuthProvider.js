@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { getAuth, signInWithEmailAndPassword,  } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword,  } from "firebase/auth";
 import app from '../firebase/firebase.init';
 
 
@@ -10,10 +10,11 @@ const auth = getAuth(app)
 const AuthProvider = ({children}) => {
     const [user , setUser] = useState('Akash')
 
-
+ // create user 
    const signInWithEmail = (email , password) =>{
-    return signInWithEmailAndPassword(auth , email ,password);
+    return createUserWithEmailAndPassword(auth , email , password);
    }
+//Login user
 
 
     const authInfo = {
