@@ -8,13 +8,15 @@ import Review from './AddReview/Review';
 const ServiceReview = ({ service }) => {
   const [reviews, setReviews] = useState([])
   const { user } = useContext(AuthContext)
-  console.log(service._id)
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?reviewId=${service._id}`)
+    fetch(`http://localhost:5000/reviews?reviewId=${service._id}` , {
+      headers : {
+        authorization : `Bearer ${localStorage.getItem('tourGuide-token')}`
+      }
+    })
       .then(res => res.json())
       .then(data => setReviews(data))
   }, [service._id])
-  console.log(reviews)
   return (
     <div>
       {

@@ -6,7 +6,6 @@ import { faLongArrowAltRight, faUser } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
-  console.log(user)
   const menuBar = <>
     <li><Link to={'/'}>Home</Link></li>
     <li><Link to={'/services'}>Services</Link></li>

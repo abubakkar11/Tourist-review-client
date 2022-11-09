@@ -5,12 +5,14 @@ import { AuthContext } from '../../AuthProvoder/AuthProvider';
 import loginImage from '../../Images/login/login.png'
 import { FaGooglePlusG, FaGithub } from 'react-icons/fa';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import useTitle from '../../useTitle/useTitle';
 
 
 const Register = () => {
+    useTitle('Register')
     //import context
     const [error, setError] = useState(false)
-    const { signInWithEmail, signUpWithGoogle, signUpWithGitHub, updateProfiles } = useContext(AuthContext);
+    const { signInWithEmail,updateUserProfile, signUpWithGoogle, signUpWithGitHub, updateProfiles } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider()
     const gitHubProvider = new GithubAuthProvider()
     // Register form submit handle
@@ -20,7 +22,6 @@ const Register = () => {
         const displayName = form.name.value;
         const photoURL = form.photoURL.value;
         const email = form.email.value;
-        handleUpdateProfiles(displayName , photoURL)
         const password = form.password.value;
         console.log(displayName, photoURL, email, password)
         signInWithEmail(email, password)
@@ -28,6 +29,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user)
                 setError(true)
+                handleUpdateProfile(displayName,photoURL)
                 toast.success('Login Successfull')
                 form.reset()
             })
@@ -37,16 +39,16 @@ const Register = () => {
                 setError(error)
             })
     }
-    const handleUpdateProfiles = (displayName , photoURL) =>{
-       const profiles ={
-        displayName : displayName,
-        photoURL : photoURL
-       }
-       updateProfiles(profiles)
-       .then(() =>{
-        'profile updated'
-       })
-       .catch(err => console.error(err))
+    const handleUpdateProfile = (displayName , photoURL) =>{
+        const profile = {
+            displayName : displayName,
+            photoURL : photoURL
+        }
+        updateUserProfile(profile)
+        .then(() =>{
+            'profile updated'
+        })
+        .catch(err => console.error(err))
     }
     const handleGoogleSignUp = () => {
         signUpWithGoogle(googleProvider)

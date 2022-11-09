@@ -8,10 +8,12 @@ import ServicesCard from './ServicesCard';
 import About from './About/About';
 import ContractGuide from './ContractGuide/ContractGuide';
 import { Link } from 'react-router-dom';
+import useTitle from '../../useTitle/useTitle';
 
 
 const Home = () => {
   const [services, setServices] = useState([])
+  useTitle('Home')
   useEffect(() => {
     fetch('http://localhost:5000/services')
       .then(res => res.json())
@@ -45,6 +47,7 @@ const Home = () => {
   ]
   return (
     <div>
+      
       <div style={{ height: '600px' }} className="carousel rounded-md">
         {
           bannerDetails.map(banner => <Banner

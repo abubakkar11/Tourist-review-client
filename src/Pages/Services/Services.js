@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
-import { Link, useLoaderData,  } from 'react-router-dom';
-import { AuthContext } from '../../AuthProvoder/AuthProvider';
-import ServiceReview from '../Service/ServiceReview/ServiceReview';
+import React from 'react';
+import {useLoaderData,  } from 'react-router-dom';
+import useTitle from '../../useTitle/useTitle';
 import AllServiceCard from './AllServiceCard';
 
 const Services = () => {
-    const {user} = useContext(AuthContext)
+  useTitle('Services')
     const services = useLoaderData();
     console.log(services)
     return (

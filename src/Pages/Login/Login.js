@@ -1,10 +1,16 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvoder/AuthProvider';
 import loginImage from '../../Images/login/login.png'
+import useTitle from '../../useTitle/useTitle';
 
 const Login = () => {
     const [error , setError] = useState(false)
+    useTitle('Login')
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     //import context
   const {login} = useContext(AuthContext)
   // Register form submit handle
@@ -18,9 +24,27 @@ const Login = () => {
     .then(result =>{
         const user = result.user;
         console.log(user)
+        const currentUser = {
+          email : user?.email
+        }
+        fetch("http://localhost:5000/jwt",
+        {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(currentUser)
+        })
+       .then(res => res.json())
+       .then(data => {
+        console.log(data)
+        localStorage.setItem('tourGuide-token', data.token)
+       })
         setError(true)
         toast.success('Login Successfull')
         form.reset()
+        navigate(from, { replace: true })
     })
     .catch(err => {
         const error = err.message;
