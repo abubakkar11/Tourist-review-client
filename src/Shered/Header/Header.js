@@ -11,7 +11,7 @@ const Header = () => {
     <li><Link to={'/'}>Home</Link></li>
     <li><Link to={'/services'}>Services</Link></li>
     {
-      user?.uid ? <Link className='mt-3'>Reveiw</Link> :
+      user?.uid ? <Link to={'/myReview'} className='mt-3'>My Review</Link> :
       ''
     }
   </>
@@ -33,7 +33,7 @@ const Header = () => {
             {menuBar}
           </ul>
         </div>
-        <Link className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+        <Link to={'/'} className="btn btn-ghost normal-case text-xl">Tourist<span className='text-3xl text-amber-600'>Guide</span></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">

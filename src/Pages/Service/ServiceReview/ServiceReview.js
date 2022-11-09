@@ -26,10 +26,20 @@ const ServiceReview = ({ service }) => {
           </div>
       }
       {
-        reviews.map(review => <Review
-        key={review._id}
-        review={review}
-        ></Review>)
+        
+        user?.uid ?  <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-10'>
+        {
+          reviews.map(review => <Review
+            key={review._id}
+            review={review}
+          ></Review>)
+        }
+      </div>
+          :
+         <>
+         ''
+         </>
+
       }
 
     </div>

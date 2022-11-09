@@ -1,19 +1,24 @@
 import React from 'react';
 
-const Review = () => {
+const Review = ({ review }) => {
+    const { name, img, email, message, retting, serviceName } = review
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
-        <figure className="px-10 pt-10">
-          <img src="https://placeimg.com/400/225/arch" alt="Shoes" className="rounded-xl" />
-        </figure>
-        <div className="card-body items-center text-center">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
+        <div className="card  bg-base-100 shadow-xl">
+            <figure className="px-10 pt-10">
+                <div className='flex justify-center items-center'>
+                    <img src={img} alt="Shoes" className=" bg-neutral-focus text-neutral-content rounded-full w-16" />
+                    <div className='ml-3'>
+                    <p>{name}</p>
+                    <p>{email}</p>
+                    </div>
+                </div>
+            </figure>
+            <div className="card-body items-center text-center">
+                <h2 className="card-title">{serviceName}</h2>
+                <p>Retting : {retting}</p>
+                <p><span className='font-semibold'>About This Guide</span> : {message}</p>
+            </div>
         </div>
-      </div>
     );
 };
 

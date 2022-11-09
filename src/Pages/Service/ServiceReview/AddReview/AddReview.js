@@ -53,13 +53,15 @@ const AddReview = ({ service }) => {
                     <div className='grid lg:grid-cols-2 gap-10'>
                         <input type="text" placeholder="First Name" name='name' defaultValue={user?.displayName} className="input input-bordered input-secondary w-full " />
                         <input type="text" placeholder="Retting Out of 5" name='retting' className="input input-bordered input-secondary w-full " />
-                        <input type="text" placeholder="" name='email' defaultValue={user?.email} className="input input-bordered input-secondary w-full " readOnly />
+                        <input type="text" placeholder="Email" name='email' defaultValue={user?.email } className="input input-bordered input-secondary w-full "  />
                     </div>
                     <textarea name='message' className="textarea textarea-success w-full mt-5" placeholder="Message"></textarea>
                     <input type="submit" className="btn btn-primary" value="Send Review" />
                 </form>
             </div>
-            
+            <div className='mt-10 font-medium text-orange-500'>
+            <h1 className='text-4xl '>Tourist Review</h1>
+            </div>
         </div>
     );
 };

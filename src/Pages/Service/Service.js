@@ -12,6 +12,7 @@ const Service = () => {
     console.log(service)
     return (
         <div>
+             
             <div className="card lg:card-side bg-base-100 shadow-xl mt-10">
                 <figure> <PhotoProvider>
                     <PhotoView src={img}>
