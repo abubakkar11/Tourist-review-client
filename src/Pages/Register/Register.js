@@ -23,11 +23,9 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(displayName, photoURL, email, password)
         signInWithEmail(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
                 setError(true)
                 handleUpdateProfile(displayName,photoURL)
                 toast.success('Login Successfull')
@@ -90,13 +88,13 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="name" name='name' placeholder="name" className="input input-bordered" />
+                            <input type="name" name='name' placeholder="name" className="input input-bordered" required/>
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name='photoURL' placeholder="Photo URL" className="input input-bordered" />
+                            <input type="text" name='photoURL' placeholder="Photo URL" className="input input-bordered" required/>
                         </div>
                         <div className="form-control">
                             <label className="label">

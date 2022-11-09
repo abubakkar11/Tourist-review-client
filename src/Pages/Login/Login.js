@@ -19,11 +19,9 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email , password)
     login(email , password)
     .then(result =>{
         const user = result.user;
-        console.log(user)
         const currentUser = {
           email : user?.email
         }
@@ -38,7 +36,6 @@ const Login = () => {
         })
        .then(res => res.json())
        .then(data => {
-        console.log(data)
         localStorage.setItem('tourGuide-token', data.token)
        })
         setError(true)

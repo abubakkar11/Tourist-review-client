@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import React from 'react';
+import {  useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import ServiceReview from './ServiceReview/ServiceReview';
-import { AuthContext } from '../../AuthProvoder/AuthProvider';
 import useTitle from '../../useTitle/useTitle';
 
 const Service = () => {

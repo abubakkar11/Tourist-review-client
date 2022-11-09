@@ -6,7 +6,6 @@ import AllServiceCard from './AllServiceCard';
 const Services = () => {
   useTitle('Services')
     const services = useLoaderData();
-    console.log(services)
     return (
       <div>
           <div className='grid lg:grid-cols-3 md:grid-cols-2'>
