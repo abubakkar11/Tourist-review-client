@@ -12,7 +12,7 @@ const Register = () => {
     useTitle('Register')
     //import context
     const [error, setError] = useState(false)
-    const { signInWithEmail,updateUserProfile, signUpWithGoogle, signUpWithGitHub, updateProfiles } = useContext(AuthContext);
+    const { signInWithEmail, updateUserProfile, signUpWithGoogle, signUpWithGitHub, updateProfiles } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider()
     const gitHubProvider = new GithubAuthProvider()
     // Register form submit handle
@@ -27,7 +27,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 setError(true)
-                handleUpdateProfile(displayName,photoURL)
+                handleUpdateProfile(displayName, photoURL)
                 toast.success('Login Successfull')
                 form.reset()
             })
@@ -37,16 +37,16 @@ const Register = () => {
                 setError(error)
             })
     }
-    const handleUpdateProfile = (displayName , photoURL) =>{
+    const handleUpdateProfile = (displayName, photoURL) => {
         const profile = {
-            displayName : displayName,
-            photoURL : photoURL
+            displayName: displayName,
+            photoURL: photoURL
         }
         updateUserProfile(profile)
-        .then(() =>{
-            'profile updated'
-        })
-        .catch(err => console.error(err))
+            .then(() => {
+                'profile updated'
+            })
+            .catch(err => console.error(err))
     }
     const handleGoogleSignUp = () => {
         signUpWithGoogle(googleProvider)
@@ -88,13 +88,13 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="name" name='name' placeholder="name" className="input input-bordered" required/>
+                            <input type="name" name='name' placeholder="name" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name='photoURL' placeholder="Photo URL" className="input input-bordered" required/>
+                            <input type="text" name='photoURL' placeholder="Photo URL" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -112,6 +112,7 @@ const Register = () => {
                         </div>
                         <input className='btn btn-primary' type="submit" value="Login" />
                     </form>
+                    <p className='mb-8 text-center'>Have a account ? Please <Link className='text-blue-500' to={'/login'}>Login</Link></p>
                     <div className=' ml-10  mb-5'>
                         <button onClick={handleGoogleSignUp} className="btn btn-outline btn-primary mr-3">SignUp With Google <FaGooglePlusG className='ml-3 text-2xl' /></button>
                         <button onClick={handleGitHubSignUp} className="btn btn-outline">SignUp With GitHub <FaGithub className='ml-3 text-2xl' /></button>

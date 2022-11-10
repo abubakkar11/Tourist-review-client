@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvoder/AuthProvider';
 import loginImage from '../../Images/login/login.png'
 import useTitle from '../../useTitle/useTitle';
@@ -74,6 +74,7 @@ const Login = () => {
                 <button className="btn btn-primary">Login</button>
               </div>
             </form>
+            <p className='mb-8 text-center'>Have not account ? Please <Link className='text-blue-500' to={'/register'}>Register</Link></p>
           </div>
         </div>
       </div>
