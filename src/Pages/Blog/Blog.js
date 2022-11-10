@@ -1,6 +1,8 @@
 import React from 'react';
 import image from '../../Images/blog/blog-icon-trendy-3d-style-isolated-white-background-blogging-symbol-your-web-site-design-logo-app-ui-vector-illustration-eps10_153454-24.avif'
+import useTitle from '../../useTitle/useTitle';
 const Blog = () => {
+    useTitle('Blog')
     return (
         <div className='flex justify-around mt-20'>
             <div>

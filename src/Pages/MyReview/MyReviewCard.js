@@ -1,8 +1,7 @@
 import React from 'react';
 
-const MyReviewCard = ({myReview}) => {
-    const { name, img, email, message, retting, serviceName } = myReview
-    
+const MyReviewCard = ({myReview , handleDelete}) => {
+    const { name, img, email, _id , message, retting, serviceName } = myReview;
     return (
         <div className="card  bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
@@ -18,6 +17,7 @@ const MyReviewCard = ({myReview}) => {
             <h2 className="card-title">{serviceName}</h2>
             <p>Retting : {retting}</p>
             <p><span className='font-semibold'>About This Guide</span> : {message}</p>
+            <button onClick={() =>handleDelete(_id)} className="btn  btn-warning">Delete</button> 
         </div>
     </div>
     );
