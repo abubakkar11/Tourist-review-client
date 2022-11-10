@@ -9,9 +9,15 @@ const MyReviews = () => {
     const [myReviews, setMyReviews] = useState([])
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
+            headers:{
+                authorization : `Bearer ${localStorage.getItem('tourGuide-token')}`
+            }
+        })
             .then(res => res.json())
-            .then(data => setMyReviews(data))
+            .then(data => {
+                setMyReviews(data)
+            })
     }, [user?.email])
     const handleDelete = (id) => {
         const process = window.confirm('Are you sure')

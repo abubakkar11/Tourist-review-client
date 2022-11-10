@@ -10,11 +10,7 @@ const ServiceReview = ({ service }) => {
   const { user } = useContext(AuthContext)
   console.log(reviews)
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?reviewId=${service._id}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('tourGuide-token')}`
-      }
-    })
+    fetch(`http://localhost:5000/reviews?reviewId=${service._id}`)
       .then(res => res.json())
       .then(data => setReviews(data))
   }, [service._id])
