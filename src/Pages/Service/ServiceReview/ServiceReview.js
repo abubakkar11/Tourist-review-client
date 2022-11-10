@@ -8,10 +8,11 @@ import Review from './AddReview/Review';
 const ServiceReview = ({ service }) => {
   const [reviews, setReviews] = useState([])
   const { user } = useContext(AuthContext)
+  console.log(reviews)
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?reviewId=${service._id}` , {
-      headers : {
-        authorization : `Bearer ${localStorage.getItem('tourGuide-token')}`
+    fetch(`http://localhost:5000/reviews?reviewId=${service._id}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('tourGuide-token')}`
       }
     })
       .then(res => res.json())
@@ -28,19 +29,19 @@ const ServiceReview = ({ service }) => {
           </div>
       }
       {
-        
-        user?.uid ?  <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-10'>
-        {
-          reviews.map(review => <Review
-            key={review._id}
-            review={review}
-          ></Review>)
-        }
-      </div>
-          :
-         <>
-         ''
-         </>
+        reviews.length === 0 ? <><p className='text-center text-3xl text-orange-500 opacity-50 py-5'>No review About This Service</p></> :
+          user?.uid ? <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-10'>
+            {
+              reviews.map(review => <Review
+                key={review._id}
+                review={review}
+              ></Review>)
+            }
+          </div>
+            :
+            <>
+              ''
+            </>
 
       }
 

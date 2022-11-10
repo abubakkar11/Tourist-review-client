@@ -1,9 +1,9 @@
 
 const Review = ({ review }) => {
     const { name, img, email, message, retting, serviceName } = review
+    
     return (
         <div className="card  bg-base-100 shadow-xl">
-          
             <figure className="px-10 pt-10">
                 <div className='flex justify-center items-center'>
                     <img src={img} alt="Shoes" className=" bg-neutral-focus text-neutral-content rounded-full w-16" />

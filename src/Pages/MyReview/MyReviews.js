@@ -35,7 +35,7 @@ const MyReviews = () => {
         <div>
             {myReviews.length === 0 ? 
             <>
-            <p className='mt-5 text-center text-3xl text-orange-500 font-semibold'>No Review Please add review</p>
+            <p className='mt-5 text-center opacity-50 text-3xl text-orange-500 font-semibold'>No Review Please add review</p>
             </>
                 :
                 <>

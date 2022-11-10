@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvoder/AuthProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltRight, faUser } from '@fortawesome/free-solid-svg-icons'
+import toast from 'react-hot-toast';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
@@ -19,7 +20,7 @@ const Header = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-
+      toast.success('LogOut')
       })
       .catch(err => console.error(err))
   }
