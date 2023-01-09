@@ -9,20 +9,19 @@ const MyReviews = () => {
     const [myReviews, setMyReviews] = useState([])
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
+        fetch(`https://assesment-11-server.vercel.app/reviews?email=${user?.email}`,{
             headers:{
                 authorization : `Bearer ${localStorage.getItem('tourGuide-token')}`
             }
         })
             .then(res => res.json())
             .then(data => {
-                setMyReviews(data)
-            })
+                setMyReviews(data)})
     }, [user?.email])
     const handleDelete = (id) => {
         const process = window.confirm('Are you sure')
         if (process) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://assesment-11-server.vercel.app/reviews/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

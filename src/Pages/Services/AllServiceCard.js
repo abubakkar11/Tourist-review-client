@@ -1,12 +1,8 @@
-import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-import ServiceReview from '../Service/ServiceReview/ServiceReview';
-import { AuthContext } from '../../AuthProvoder/AuthProvider';
 
 const AllServiceCard = ({ service }) => {
-    const {user} = useContext(AuthContext)
     const { title, retting, price, body, img, _id } = service;
     return (
      <div>

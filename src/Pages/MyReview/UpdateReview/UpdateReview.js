@@ -8,7 +8,7 @@ const UpdateReview = () => {
     const handleSubmit = event =>{
         event.preventDefault()
         console.log(newReview)
-        fetch(`http://localhost:5000/reviews/${review._id}`,
+        fetch(`https://assesment-11-server.vercel.app/reviews/${review._id}`,
         {
             method: "PUT",
             headers: {

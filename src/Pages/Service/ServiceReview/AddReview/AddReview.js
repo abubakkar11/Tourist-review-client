@@ -27,7 +27,7 @@ const AddReview = ({ service }) => {
             message: message,
             retting: retting,
         }
-        fetch("http://localhost:5000/reviews",
+        fetch("https://assesment-11-server.vercel.app/reviews",
             {
                 method: "POST",
                 headers: {

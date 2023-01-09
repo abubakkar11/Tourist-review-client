@@ -10,7 +10,7 @@ const ServiceReview = ({ service }) => {
   const { user } = useContext(AuthContext)
   console.log(reviews)
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?reviewId=${service._id}`)
+    fetch(`https://assesment-11-server.vercel.app/reviews?reviewId=${service._id}`)
       .then(res => res.json())
       .then(data => setReviews(data))
   }, [service._id])

@@ -1,10 +1,7 @@
-import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { AuthContext } from '../../AuthProvoder/AuthProvider';
 import useTitle from '../../useTitle/useTitle';
 
 const AddService = () => {
-    const { user } = useContext(AuthContext)
     useTitle('Add Service')
     const handleAddService = event => {
         event.preventDefault()
@@ -25,7 +22,7 @@ const AddService = () => {
             price: price,
             img: photoURL
         }
-        fetch("http://localhost:5000/all-services",
+        fetch("https://assesment-11-server.vercel.app/all-services",
         {
             method: "POST",
             headers: {

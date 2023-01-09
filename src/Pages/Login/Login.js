@@ -37,8 +37,8 @@ const Login = () => {
        .then(res => res.json())
        .then(data => {
         localStorage.setItem('tourGuide-token', data.token)
-        navigate(from, { replace: true })
        })
+       navigate(from, { replace: true })
         setError(true)
         toast.success('Login Successfull')
         form.reset()

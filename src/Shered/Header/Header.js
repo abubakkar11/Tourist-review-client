@@ -10,10 +10,12 @@ const Header = () => {
   const menuBar = <>
     <li><Link to={'/'}>Home</Link></li>
     <li><Link to={'/services'}>Services</Link></li>
-    <li><Link to={'/addService'}>Add Service</Link></li>
     <li><Link to={'/blog'}>Blog</Link></li>
     {
-      user?.uid ? <Link to={'/myReview'} className='mt-3'>My Review</Link> :
+      user?.uid ? <>
+      <Link to={'/myReview'} className='mt-3'>My Review</Link>
+      <li><Link to={'/addService'}>Add Service</Link></li>
+      </> :
       ''
     }
   </>

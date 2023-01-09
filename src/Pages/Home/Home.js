@@ -15,7 +15,7 @@ const Home = () => {
   const [services, setServices] = useState([])
   useTitle('Home')
   useEffect(() => {
-    fetch('http://localhost:5000/services')
+    fetch('https://assesment-11-server.vercel.app/services')
       .then(res => res.json())
       .then(data => setServices(data))
   }, [])
@@ -44,10 +44,16 @@ const Home = () => {
       id: 4,
       next: 1,
     },
+    // {
+    //   img: Image4,
+    //   pre: 3,
+    //   id: 4,
+    //   next: 1,
+    // },
   ]
   return (
     <div>
-      
+
       <div style={{ height: '600px' }} className="carousel rounded-md">
         {
           bannerDetails.map(banner => <Banner
@@ -63,12 +69,12 @@ const Home = () => {
             service={service}
           ></ServicesCard>)
         }
-       <div className='mt-10'>
-       <Link to={'/services'}><button className="btn btn-primary">See all</button></Link>
-       </div>
+        <div className='mt-10'>
+          <Link to={'/services'}><button className="btn btn-primary">See all</button></Link>
+        </div>
       </div>
       <div>
-       <About></About>
+        <About></About>
       </div>
       <div>
         <ContractGuide></ContractGuide>
